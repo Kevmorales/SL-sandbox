@@ -37,6 +37,7 @@ body {
   border: 2px solid white;
 }
 
+
 .traffic-status-window {
   display: flex;
   flex-direction: column;
@@ -137,4 +138,52 @@ hr {
 .traffic-status-window span {
   font-size: 20px;
   margin-right: 5px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) { 
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .side-panel {
+    width: 100%; 
+    margin-right: 0; 
+    margin-bottom: 20px;
+  }
+  
+  .teletext-window {
+    width: 100%; 
+    max-width: 100%;
+    height: auto; /* Adjust height for mobile */
+  }
+  
+  .filters input,
+  .filters select,
+  .filters button {
+    width: 100%; /* Full width inputs and button for better touch targets */
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    padding: 5px 0;
+  }
+  
+  h2 {
+    font-size: 22px;
+    padding: 3px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin: 5px 0;  
+  }
+  
+  .traffic-status-window span {
+    font-size: 18px;
+  }
 }
