@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   };
 
   // Funktion för att hämta trafikvarningar baserat på valda filter.
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setAlerts([]);
     const params = {
       transportMode,
@@ -36,10 +36,10 @@ function App() {
     } catch (error) {
       console.error("Fel vid hämtning av servicevarningar:", error);
     }
-  };
+  }, [transportMode, lineNumber]);
 
   // Funktion för att hämta övergripande trafikstatus.
-  const fetchTrafficStatus = async () => {
+  const fetchTrafficStatus = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3001/traffic-status");
       // Kontrollera om vi fick tillbaka en lista med trafiktyper från API:et.
@@ -54,13 +54,13 @@ function App() {
     } catch (error) {
       console.error("Fel vid hämtning av trafikstatus:", error);
     }
-  };
+  }, []);
 
   // Vid första renderingen, hämta både trafikvarningar och trafikstatus.
   useEffect(() => {
     fetchData();
     fetchTrafficStatus();
-  }, []);
+  }, [fetchData, fetchTrafficStatus]);
 
   return (
     // Huvudlayout för applikationen.
