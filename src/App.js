@@ -24,7 +24,7 @@ function App() {
       lineNumber,
     };
     try {
-      const response = await axios.get("http://localhost:3001/service-alerts", {
+      const response = await axios.get("https://sl-sandbox-ace39d1f7a48.herokuapp.com/service-alerts", {
         params,
       });
       // Kontrollera om vi fick tillbaka en lista från API:et.
@@ -41,7 +41,7 @@ function App() {
   // Funktion för att hämta övergripande trafikstatus.
   const fetchTrafficStatus = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3001/traffic-status");
+      const response = await axios.get("https://sl-sandbox-ace39d1f7a48.herokuapp.com/traffic-status");
       // Kontrollera om vi fick tillbaka en lista med trafiktyper från API:et.
       if (Array.isArray(response.data.ResponseData.TrafficTypes)) {
         setTrafficStatus(response.data.ResponseData.TrafficTypes);
