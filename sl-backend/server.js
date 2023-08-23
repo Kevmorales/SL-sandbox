@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 3001;
 
 //  CORS-hantering så att frontend kan prata med backend.
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: 'https://sl-sandbox.surge.sh'
+  }));
 
 app.get('/service-alerts', async (req, res) => {
     const API_KEY = process.env.API_KEY;

@@ -12,7 +12,7 @@ function App() {
   const statusMessages = {
     EventGood: "Inga störningar",
     EventMinor: "Mindre störningar",
-    EventPlanned: "Större störningar",
+    EventMajor: "Större störningar",
     // Lägg till fler om du hittar
   };
 
